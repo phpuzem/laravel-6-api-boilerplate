@@ -6,6 +6,7 @@ use App\Services\JsonResponseService;
 use Exception;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
@@ -55,13 +56,13 @@ class Handler extends ExceptionHandler
      * @param \Illuminate\Http\Request $request
      * @param \Exception $exception
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function render($request, Exception $exception)
     {
         if ($exception instanceof MethodNotAllowedHttpException) {
-            $this->jsonResponseService->fail([
-                'errors' => ['failed' => 'Method Not Supported', Response::HTTP_METHOD_NOT_ALLOWED],
+            return $this->jsonResponseService->fail([
+                'errors' => ['failed' => 'Method Not Supported.', Response::HTTP_METHOD_NOT_ALLOWED],
             ]);
         }
 

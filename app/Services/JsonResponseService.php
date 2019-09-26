@@ -51,13 +51,14 @@ class JsonResponseService
             ->setStatusCode($code);
     }
 
+
     /**
-     * @param array $resource
+     * @param $resource
      * @param $status
      *
      * @return \Illuminate\Http\Resources\Json\JsonResource
      */
-    private function putAdditionalMeta(array $resource, $status)
+    private function putAdditionalMeta($resource, $status)
     {
         $meta   = [
             'status'         => $status,
