@@ -62,8 +62,8 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof MethodNotAllowedHttpException) {
             return $this->jsonResponseService->fail([
-                'errors' => ['failed' => 'Method Not Supported.', Response::HTTP_METHOD_NOT_ALLOWED],
-            ]);
+                'errors' => ['failed' => 'Method Not Supported.'],
+            ], Response::HTTP_METHOD_NOT_ALLOWED);
         }
 
 
