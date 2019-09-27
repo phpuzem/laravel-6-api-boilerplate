@@ -4,10 +4,15 @@ namespace App\Exceptions;
 
 use App\Services\JsonResponseService;
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Contracts\Container\Container;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Spatie\Permission\Exceptions\UnauthorizedException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -54,7 +59,7 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Exception $exception
+     * @param \Exception               $exception
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -62,11 +67,46 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof MethodNotAllowedHttpException) {
             return $this->jsonResponseService->fail([
-                'errors' => ['failed' => 'Method Not Supported.'],
+                'errors' => ['failed' => 'HTTP_METHOD_NOT_ALLOWED'],
             ], Response::HTTP_METHOD_NOT_ALLOWED);
         }
 
+        if ($exception instanceof AuthenticationException) {
+            return $this->jsonResponseService->fail([
+                'errors' => ['failed' => 'HTTP_UNAUTHORIZED'],
+            ], Response::HTTP_UNAUTHORIZED);
+        }
 
-        return parent::render($request, $exception);
+        if ($exception instanceof ModelNotFoundException) {
+            return $this->jsonResponseService->fail([
+                'errors' => ['failed' => 'HTTP_NOT_FOUND'],
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        if ($exception instanceof NotFoundHttpException) {
+            return $this->jsonResponseService->fail([
+                'errors' => ['failed' => 'HTTP_NOT_FOUND'],
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        if ($exception instanceof UnauthorizedException) {
+            return $this->jsonResponseService->fail([
+                'errors' => ['failed' => 'HTTP_FORBIDDEN'],
+            ], Response::HTTP_FORBIDDEN);
+        }
+
+        if ($exception instanceof HttpResponseException) {
+            return parent::render($request, $exception);
+        }
+
+        return $this->jsonResponseService->fail([
+            'message'   => [
+                'failed' => json_decode($exception->getMessage()) != null ?
+                    json_decode($exception->getMessage()) : $exception->getMessage(),
+            ],
+            'exception' => (new \ReflectionClass($exception))->getShortName(),
+            'file'      => $exception->getFile(),
+        ], Response::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
 }
