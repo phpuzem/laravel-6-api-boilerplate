@@ -3,10 +3,10 @@
 namespace App\Services;
 
 use App\Http\Models\User;
-use App\Http\Requests\Request;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Passwords\PasswordBrokerManager;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 
 /**
@@ -55,7 +55,7 @@ class AuthService
     }
 
     /**
-     * @param \App\Http\Requests\Request $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return mixed
      */
@@ -67,7 +67,7 @@ class AuthService
     }
 
     /**
-     * @param \App\Http\Requests\Request $request
+     * @param \Illuminate\Http\Request   $request
      * @param \App\Http\Models\User|null $user
      *
      * @return \Laravel\Passport\PersonalAccessTokenResult
@@ -78,7 +78,7 @@ class AuthService
     }
 
     /**
-     * @param \App\Http\Requests\Request $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return bool
      */
@@ -92,7 +92,7 @@ class AuthService
     }
 
     /**
-     * @param \App\Http\Requests\Request $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return bool
      */
@@ -112,7 +112,7 @@ class AuthService
     }
 
     /**
-     * @param \App\Http\Requests\Request $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return mixed
      */

@@ -6,6 +6,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Requests\Auth\Login;
 use App\Http\Resources\Auth\User;
 use App\Services\AuthService;
+use Illuminate\Http\Request;
 
 /**
  * Class AuthController
@@ -15,7 +16,7 @@ class AuthController extends MainController
 {
     /**
      * @param \App\Http\Requests\Auth\Login $request
-     * @param \App\Services\AuthService $authService
+     * @param \App\Services\AuthService     $authService
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -41,5 +42,18 @@ class AuthController extends MainController
                 ],
             ])
         );
+    }
+
+    /**
+     * @param \Illuminate\Http\Request  $request
+     * @param \App\Services\AuthService $authService
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function logout(Request $request, AuthService $authService)
+    {
+        $authService->logout($request);
+
+        return $this->response->success();
     }
 }
