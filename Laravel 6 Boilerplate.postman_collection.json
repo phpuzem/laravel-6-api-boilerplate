@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "10807354-16e0-402a-9080-1ffe9f8dd98f",
+		"name": "Laravel 6 Boilerplate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "destek@phpuzem.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "www.boilerplate.test/api/auth/login",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "www.boilerplate.test/api/auth/logout",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "www.boilerplate.test/api/auth/me",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjlhNGNiOTkyMmMyMmIyZjBiNTM2NzRiYjI2Zjg3MmJkYzNjN2IyZGVjYzZhODI4MzU2MDE1YWE3YmQwZTNlZTE5YzJhZjhiZWVkNjFjNTg5In0.eyJhdWQiOiIxIiwianRpIjoiOWE0Y2I5OTIyYzIyYjJmMGI1MzY3NGJiMjZmODcyYmRjM2M3YjJkZWNjNmE4MjgzNTYwMTVhYTdiZDBlM2VlMTljMmFmOGJlZWQ2MWM1ODkiLCJpYXQiOjE1Njk2MTI0MTksIm5iZiI6MTU2OTYxMjQxOSwiZXhwIjoxNjAxMjM0ODE5LCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.NsQhxHW8b9ddBlpSw6tjDoPba_j1oQOaE1WfjJvvCsDHYO5vj7nxyUwNKcvs3IS2hFuN6_13qQ5903w4-Gt5mLFM_lYdskuyLIgMoz5_dwb31e7gZAkg2Qd1mROYrslJq-38ROKGufMMuTkNPJSJXmxJRGVkhf_6SuePBr0RPBd7JUBF9VXwPe9hb1LVrNbs_LRz9MNYAtCAew1tBBk454LzKRLSWe7Wu2e3aDxVJ56kq32Yq4N0umLrx9xzjC6E_0E9ayFngdrUwIsWGXWOY6S2wzt9-mXj8k6dPM7mO0OWumsc4Qwzb3g163zihxgvOVrWegHAqGPIgKeJBFEB32cqyjVqq9uGfsAxqPMP3avjT6tSiRbjeNYix1u9L7lYlcip3dk20RKTvnufP4FlsIxgHyHsyICtibM0UTkEISdpmIFllHU2-fRlZBK-Zp6NZmEfRwmhNzzqJ7puBp1wo_yMLAD2SNm_BjIBXHD3f9NnfVNHDVgDpg0W1Slq4u3vbz_4Vh_RV3Gpl9tKiCFmTPGnxNShy1OpxQv3hLmWmq75fJEci0VQVE-C4MMup_0R11zGcLIg0ljqlfq3lUh_ZLHhko6wDrRfLyeQO7clvO_3jzQD_jJHRdlEdZ8Mj07yBpf6AOtzm_ynXnLmGBfdbaEY5f4Qyg_6vofCWeXLenY",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2d7f5836-1452-4076-8ae9-d62692222bc3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bbd5c380-8901-471e-8d0f-3409ac78673b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

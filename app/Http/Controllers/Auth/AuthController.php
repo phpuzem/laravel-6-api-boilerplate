@@ -45,6 +45,16 @@ class AuthController extends MainController
     }
 
     /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function me(Request $request)
+    {
+        return $this->response->success(new User($request->user()));
+    }
+
+    /**
      * @param \Illuminate\Http\Request  $request
      * @param \App\Services\AuthService $authService
      *
