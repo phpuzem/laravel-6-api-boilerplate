@@ -45,18 +45,32 @@
 					"response": []
 				},
 				{
-					"name": "logout",
+					"name": "register",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "destek@phpuzem.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Halil Coşdu",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "www.boilerplate.test/api/auth/logout",
+							"raw": "www.boilerplate.test/api/auth/register",
 							"host": [
 								"www",
 								"boilerplate",
@@ -65,7 +79,7 @@
 							"path": [
 								"api",
 								"auth",
-								"logout"
+								"register"
 							]
 						}
 					},
@@ -93,6 +107,33 @@
 								"api",
 								"auth",
 								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "www.boilerplate.test/api/auth/logout",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
 							]
 						}
 					},

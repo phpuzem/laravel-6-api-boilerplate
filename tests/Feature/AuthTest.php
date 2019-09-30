@@ -93,7 +93,12 @@ class AuthTest extends TestCase
     {
         Artisan::call('passport:install');
 
-        $this->json('POST', 'api/auth/register')->dump();
+        $this->json('POST', 'api/auth/register', [
+            'name'     => 'Halil Coşdu',
+            'email'    => 'register@phpuzem.com',
+            'password' => 12345678,
+        ])
+            ->assertStatus(200);
     }
 
 

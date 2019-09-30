@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\MainController;
 use App\Http\Requests\Auth\Login;
+use App\Http\Requests\Auth\Register;
 use App\Http\Resources\Auth\User;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
@@ -52,6 +53,28 @@ class AuthController extends MainController
     public function me(Request $request)
     {
         return $this->response->success(new User($request->user()));
+    }
+
+    /**
+     * @param \App\Http\Requests\Auth\Register $request
+     * @param \App\Services\AuthService        $authService
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function register(Register $request, AuthService $authService)
+    {
+        $user = $authService->register($request);
+
+        $token = $authService->generateAccessToken($request, $user);
+
+        return $this->response->success((new User($user))
+            ->additional([
+                'meta' => [
+                    'accessToken' => $token->accessToken,
+                    'expiresIn'   => $token->token->expires_at,
+                ],
+            ])
+        );
     }
 
     /**
