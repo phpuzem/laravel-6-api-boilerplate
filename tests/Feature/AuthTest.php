@@ -2,6 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Http\Models\User;
+use Illuminate\Support\Facades\Artisan;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 /**
@@ -57,4 +60,41 @@ class AuthTest extends TestCase
             ])
             ->assertStatus(200);
     }
+
+    /**
+     *
+     */
+    public function test_it_if_user_isnt_authenticated()
+    {
+        $this->json('GET', 'api/auth/me')
+            ->assertStatus(401);
+    }
+
+    /**
+     *
+     */
+    public function test_it_returns_user_detail()
+    {
+        Artisan::call('passport:install');
+        Passport::actingAs(
+            $user = factory(User::class)->create()
+        );
+
+        $this->json('GET', 'api/auth/me')
+            ->assertJsonFragment([
+                'email' => $user->email,
+            ]);
+    }
+
+    /**
+     *
+     */
+    public function test_it_reqister_user()
+    {
+        Artisan::call('passport:install');
+
+        $this->json('POST', 'api/auth/register')->dump();
+    }
+
+
 }
