@@ -53,12 +53,17 @@ class AuthTest extends TestCase
      */
     public function test_it_returns_a_validation_if_credentials_do_match()
     {
+        Artisan::call('passport:install');
+        $user = factory(User::class)->create([
+            'password' => 'secret',
+        ]);
         $this->json('POST', 'api/auth/login',
             [
-                'email'    => 'destek@phpuzem.com',
-                'password' => 12345678,
-            ])
-            ->assertStatus(200);
+                'email'    => $user->email,
+                'password' => 'secret',
+            ])->assertJsonFragment([
+            'email' => $user->email,
+        ]);;
     }
 
     /**
