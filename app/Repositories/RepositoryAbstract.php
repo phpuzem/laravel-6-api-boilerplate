@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 
 use App\Contracts\RepositoryContract;
+use Mockery\Exception;
 
 /**
  * Class RepositoryAbstract
@@ -15,6 +16,29 @@ abstract class RepositoryAbstract implements RepositoryContract
      * @var
      */
     protected $entity;
+
+    /**
+     * RepositoryAbstract constructor.
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function __construct()
+    {
+        $this->entity = $this->resolveEntity();
+    }
+
+
+    /**
+     * @return mixed
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    protected function resolveEntity()
+    {
+        if (! method_exists($this, 'entity')) {
+            throw new Exception('No entity defined.');
+        }
+
+        return app()->make($this->entity());
+    }
 
 
     ##### Shared For All Repositories #####
@@ -77,4 +101,5 @@ abstract class RepositoryAbstract implements RepositoryContract
     {
         return $this->entity->delete($id);
     }
+
 }
