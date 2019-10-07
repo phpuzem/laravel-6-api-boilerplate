@@ -3,14 +3,15 @@
 namespace App\Repositories;
 
 
-use App\Contracts\RepositoryContract;
+use App\Contracts\{CriteriaContract, RepositoryContract};
+use Illuminate\Support\Arr;
 use Mockery\Exception;
 
 /**
  * Class RepositoryAbstract
  * @package App\Repositories
  */
-abstract class RepositoryAbstract implements RepositoryContract
+abstract class RepositoryAbstract implements RepositoryContract, CriteriaContract
 {
     /**
      * @var
@@ -26,7 +27,6 @@ abstract class RepositoryAbstract implements RepositoryContract
         $this->entity = $this->resolveEntity();
     }
 
-
     /**
      * @return mixed
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
@@ -40,15 +40,31 @@ abstract class RepositoryAbstract implements RepositoryContract
         return app()->make($this->entity());
     }
 
+    /**
+     * @param mixed ...$criteria
+     *
+     * @return $this|mixed
+     */
+    public function withCriteria(...$criteria)
+    {
+        $criteria = Arr::flatten($criteria);
 
-    ##### Shared For All Repositories #####
+        foreach ($criteria as $criterion) {
+            $this->entity = $criterion->apply($this->entity);
+        }
 
+        return $this;
+    }
+
+    ###############################################################
+    ################# Shared For All Repositories #################
+    ###############################################################
     /**
      * @return mixed
      */
     public function all()
     {
-        return $this->entity->all();
+        return $this->entity->get();
     }
 
     /**
