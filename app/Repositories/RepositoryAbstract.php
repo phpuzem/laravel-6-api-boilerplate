@@ -105,7 +105,7 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
      */
     public function update(array $attributes, $id)
     {
-        return $this->show($attributes)->update($attributes);
+        return $this->show($id)->update($attributes);
     }
 
     /**
@@ -115,7 +115,7 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
      */
     public function destroy($id)
     {
-        return $this->entity->delete($id);
+        return $this->show($id)->delete($id);
     }
 
 }

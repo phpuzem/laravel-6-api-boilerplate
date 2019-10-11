@@ -141,6 +141,154 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Permission",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "www.boilerplate.test/api/permissions",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"permissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Test\",\n\t\"guard_name\" : \"web\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "www.boilerplate.test/api/permissions",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"permissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "www.boilerplate.test/api/permissions/1",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"permissions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Test1\",\n\t\"guard_name\" : \"web\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "www.boilerplate.test/api/permissions/1",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"permissions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "www.boilerplate.test/api/permissions/1",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"permissions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
@@ -148,7 +296,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjlhNGNiOTkyMmMyMmIyZjBiNTM2NzRiYjI2Zjg3MmJkYzNjN2IyZGVjYzZhODI4MzU2MDE1YWE3YmQwZTNlZTE5YzJhZjhiZWVkNjFjNTg5In0.eyJhdWQiOiIxIiwianRpIjoiOWE0Y2I5OTIyYzIyYjJmMGI1MzY3NGJiMjZmODcyYmRjM2M3YjJkZWNjNmE4MjgzNTYwMTVhYTdiZDBlM2VlMTljMmFmOGJlZWQ2MWM1ODkiLCJpYXQiOjE1Njk2MTI0MTksIm5iZiI6MTU2OTYxMjQxOSwiZXhwIjoxNjAxMjM0ODE5LCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.NsQhxHW8b9ddBlpSw6tjDoPba_j1oQOaE1WfjJvvCsDHYO5vj7nxyUwNKcvs3IS2hFuN6_13qQ5903w4-Gt5mLFM_lYdskuyLIgMoz5_dwb31e7gZAkg2Qd1mROYrslJq-38ROKGufMMuTkNPJSJXmxJRGVkhf_6SuePBr0RPBd7JUBF9VXwPe9hb1LVrNbs_LRz9MNYAtCAew1tBBk454LzKRLSWe7Wu2e3aDxVJ56kq32Yq4N0umLrx9xzjC6E_0E9ayFngdrUwIsWGXWOY6S2wzt9-mXj8k6dPM7mO0OWumsc4Qwzb3g163zihxgvOVrWegHAqGPIgKeJBFEB32cqyjVqq9uGfsAxqPMP3avjT6tSiRbjeNYix1u9L7lYlcip3dk20RKTvnufP4FlsIxgHyHsyICtibM0UTkEISdpmIFllHU2-fRlZBK-Zp6NZmEfRwmhNzzqJ7puBp1wo_yMLAD2SNm_BjIBXHD3f9NnfVNHDVgDpg0W1Slq4u3vbz_4Vh_RV3Gpl9tKiCFmTPGnxNShy1OpxQv3hLmWmq75fJEci0VQVE-C4MMup_0R11zGcLIg0ljqlfq3lUh_ZLHhko6wDrRfLyeQO7clvO_3jzQD_jJHRdlEdZ8Mj07yBpf6AOtzm_ynXnLmGBfdbaEY5f4Qyg_6vofCWeXLenY",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ3ZmIxMzljYzA4YTk2MmFkNGVjYzk1ZDQzYzcwODRkOWZiMTEzNDI3NGExYjdiNzk4OWZjOWIxYWJiMGViMTQ3YTA3Y2U2N2IzZDMyZjBmIn0.eyJhdWQiOiI3IiwianRpIjoiZDdmYjEzOWNjMDhhOTYyYWQ0ZWNjOTVkNDNjNzA4NGQ5ZmIxMTM0Mjc0YTFiN2I3OTg5ZmM5YjFhYmIwZWIxNDdhMDdjZTY3YjNkMzJmMGYiLCJpYXQiOjE1NzA3MzI0NDgsIm5iZiI6MTU3MDczMjQ0OCwiZXhwIjoxNjAyMzU0ODQ4LCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.sWANf-bHOFMoPoG5P2n7hw__0jcdSFKe1SfAfL618FWZ1fMHLyXVCyveXQXfeRCgYrK4ensQgyUy2rmgbLNKIQCf5KSmdhA7P8OkJHOU1fznxjwl-rvXYhWHsYgFYIa5idi4nrw3fzR05TSVd4CAwHQGVXJ9RWkZSr4tuqo4gvwv2ObwKiY0SRqTwyw7iLLAnAIC5PWDhlUJI5pgM8IIBQGI1QB6JYC9APaAHBxh7YR2ZOg1I2tpDxBc6VhjIw1Eoli85kRYZhO5rnPc6_te97lmc8sITC94tiFvQKwkIs1Os-5-TtKa94jEd4kwAt_cWD87Ql-FNjxinHdYaETVUotZdx0M9xro7E1lpxX3M7ZmHUy-YGyO9eNbwFV-YY7udd5Ts1_gDY6Hpv5pHXR8jH856bTeR9xbt-vxxjc1-iQRJX5FKfIMREQYBdYfjXxKITZXPoG-q2k07M2tCIRkld_AKfU1G83_OJXgBdN41M8CdY3vLIVxoR0ORfSrMxck4OzHMngWgqDMMaNpgsJDo6ocOnq6NxMqGB8Ibmkwd0rFuRG1nF7q2p72vL7nVqHKPgYFJdL2JcEfmnE3bQVWz_34dOTmYB468h0Z6sluT-1kp-JvXeXLL2vYDWmwhYjAXCJbqSlagOxqfhuC_NOmQc2tQEZf8-y8hn7Hig2aCxI",
 				"type": "string"
 			}
 		]
