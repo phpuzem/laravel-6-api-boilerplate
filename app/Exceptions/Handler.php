@@ -67,31 +67,31 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof MethodNotAllowedHttpException) {
             return $this->jsonResponseService->fail([
-                'errors' => ['failed' => 'HTTP_METHOD_NOT_ALLOWED'],
+                'errors' => ['error' => 'HTTP_METHOD_NOT_ALLOWED'],
             ], Response::HTTP_METHOD_NOT_ALLOWED);
         }
 
         if ($exception instanceof AuthenticationException) {
             return $this->jsonResponseService->fail([
-                'errors' => ['failed' => 'HTTP_UNAUTHORIZED'],
+                'errors' => ['error' => 'HTTP_UNAUTHORIZED'],
             ], Response::HTTP_UNAUTHORIZED);
         }
 
         if ($exception instanceof ModelNotFoundException) {
             return $this->jsonResponseService->fail([
-                'errors' => ['failed' => 'HTTP_NOT_FOUND'],
+                'errors' => ['error' => 'HTTP_NOT_FOUND'],
             ], Response::HTTP_NOT_FOUND);
         }
 
         if ($exception instanceof NotFoundHttpException) {
             return $this->jsonResponseService->fail([
-                'errors' => ['failed' => 'HTTP_NOT_FOUND'],
+                'errors' => ['error' => 'HTTP_NOT_FOUND'],
             ], Response::HTTP_NOT_FOUND);
         }
 
         if ($exception instanceof UnauthorizedException) {
             return $this->jsonResponseService->fail([
-                'errors' => ['failed' => 'HTTP_FORBIDDEN'],
+                'errors' => ['error' => 'HTTP_FORBIDDEN'],
             ], Response::HTTP_FORBIDDEN);
         }
 
@@ -101,7 +101,7 @@ class Handler extends ExceptionHandler
 
         return $this->jsonResponseService->fail([
             'message'   => [
-                'failed' => json_decode($exception->getMessage()) != null ?
+                'error' => json_decode($exception->getMessage()) != null ?
                     json_decode($exception->getMessage()) : $exception->getMessage(),
             ],
             'exception' => (new \ReflectionClass($exception))->getShortName(),

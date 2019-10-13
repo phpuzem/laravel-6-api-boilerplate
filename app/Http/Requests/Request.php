@@ -31,7 +31,6 @@ abstract class Request extends LaravelFormRequest
                 $messages['error'] = $error;
             }
         }
-       // dd($messages);
         throw new HttpResponseException(
             (new JsonResponseService())->fail([
                 'errors' => $messages,
