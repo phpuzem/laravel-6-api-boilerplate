@@ -62,7 +62,7 @@ class AuthService
     public function register(Request $request)
     {
         return $this->user->create(
-            $request->only('name', 'email', 'password')
+            $request->only('username', 'email', 'password')
         );
     }
 
