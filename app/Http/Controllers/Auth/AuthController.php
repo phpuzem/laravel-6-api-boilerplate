@@ -28,7 +28,7 @@ class AuthController extends MainController
         if (! $authService->authenticate($credentials)) {
             return $this->response->fail([
                 'errors' => [
-                    'failed' => 'Invalid credentials.',
+                    'error' => 'Invalid credentials.',
                 ],
             ]);
         }

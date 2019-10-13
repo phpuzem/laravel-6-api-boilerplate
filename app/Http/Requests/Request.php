@@ -28,7 +28,7 @@ abstract class Request extends LaravelFormRequest
         $messages = [];
         foreach ($validator->errors()->messages() as $key => $errors) {
             foreach ($errors as $error) {
-                $messages[$key] = $error;
+                $messages['error'] = $error;
             }
         }
        // dd($messages);
