@@ -20,7 +20,7 @@ class JsonResponseService
      */
     public function success($resource = [], $code = Response::HTTP_OK)
     {
-        return $this->putAdditionalMeta($resource, 'success')
+        return $this->putAdditionalMeta($resource, true)
             ->response()
             ->setStatusCode($code);
     }
@@ -33,7 +33,7 @@ class JsonResponseService
      */
     public function fail($resource = [], $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
-        return $this->putAdditionalMeta($resource, 'fail')
+        return $this->putAdditionalMeta($resource, false)
             ->response()
             ->setStatusCode($code);
     }
@@ -46,7 +46,7 @@ class JsonResponseService
      */
     public function noContent($resource = [], $code = Response::HTTP_NO_CONTENT)
     {
-        return $this->putAdditionalMeta($resource, 'success')
+        return $this->putAdditionalMeta($resource, true)
             ->response()
             ->setStatusCode($code);
     }
