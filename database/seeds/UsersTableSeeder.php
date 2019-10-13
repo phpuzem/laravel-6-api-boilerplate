@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
         \App\Http\Models\User::updateOrCreate([
             'email' => 'destek@phpuzem.com',
         ], [
-            'name'     => 'Halil Coşdu',
+            'username'     => 'halilcosdu',
             'email'    => 'destek@phpuzem.com',
             'password' => 12345678,
         ]);
