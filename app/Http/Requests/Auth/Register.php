@@ -26,7 +26,7 @@ class Register extends Request
         return [
             'username' => 'required|unique:users',
             'email'    => 'required|email|unique:users',
-            'password' => 'required|confirmed|min6',
+            'password' => 'required|confirmed|min:6',
         ];
     }
 }
