@@ -25,9 +25,16 @@ abstract class Request extends LaravelFormRequest
      */
     public function failedValidation(Validator $validator)
     {
+        $messages = [];
+        foreach ($validator->errors()->messages() as $key => $errors) {
+            foreach ($errors as $error) {
+                $messages[$key] = $error;
+            }
+        }
+       // dd($messages);
         throw new HttpResponseException(
             (new JsonResponseService())->fail([
-                'errors' => $validator->errors()->messages(),
+                'errors' => $errors,
             ])
         );
     }
