@@ -2,32 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\PermissionContract;
-use App\Http\Requests\{PermissionStore, PermissionUpdate};
-use App\Http\Resources\Permission;
-use App\Http\Resources\PermissionCollection;
+use App\Contracts\RoleContract;
+use App\Http\Requests\{RoleStore, RoleUpdate};
+use App\Http\Resources\Role;
+use App\Http\Resources\RoleCollection;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
 
 /**
- * Class PermissionController
+ * Class RoleController
  * @package App\Http\Controllers
  */
-class PermissionController extends MainController
+class RoleController extends MainController
 {
 
     /**
      * @var \App\Contracts\PermissionContract
      */
-    protected $permissionContract;
+    protected $roleContract;
 
     /**
      * PermissionController constructor.
      *
-     * @param \App\Contracts\PermissionContract $permissionContract
+     * @param \App\Contracts\RoleContract $roleContract
      */
-    public function __construct(PermissionContract $permissionContract)
+    public function __construct(RoleContract $roleContract)
     {
-        $this->permissionContract = $permissionContract;
+        $this->roleContract = $roleContract;
 
         parent::__construct();
     }
@@ -40,9 +40,9 @@ class PermissionController extends MainController
     public function index()
     {
         return $this->response->success(
-            new PermissionCollection($this->permissionContract
+            new RoleCollection($this->roleContract
                 ->withCriteria([
-                    new EagerLoad(['roles', 'users']),
+                    new EagerLoad(['permissions', 'users']),
                 ])
                 ->paginate(request('perPage', 15)))
         );
@@ -51,14 +51,14 @@ class PermissionController extends MainController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\PermissionStore $request
+     * @param \App\Http\Requests\RoleStore $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(PermissionStore $request)
+    public function store(RoleStore $request)
     {
         return $this->response->success(
-            new Permission($this->permissionContract->store($request->only('name', 'guard_name')))
+            new Role($this->roleContract->store($request->only('name', 'guard_name')))
         );
     }
 
@@ -72,9 +72,9 @@ class PermissionController extends MainController
     public function show($id)
     {
         return $this->response->success(
-            new Permission($this->permissionContract
+            new Role($this->roleContract
                 ->withCriteria([
-                    new EagerLoad(['roles', 'users']),
+                    new EagerLoad(['permissions', 'users']),
                 ])
                 ->show($id))
         );
@@ -83,17 +83,17 @@ class PermissionController extends MainController
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\PermissionUpdate $request
-     * @param int                                 $id
+     * @param \App\Http\Requests\RoleUpdate $request
+     * @param int                           $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(PermissionUpdate $request, $id)
+    public function update(RoleUpdate $request, $id)
     {
-        $this->permissionContract->update($request->only('name', 'guard_name'), $id);
+        $this->roleContract->update($request->only('name', 'guard_name'), $id);
 
         return $this->response->success(
-            new Permission($this->permissionContract->show($id))
+            new Role($this->roleContract->show($id))
         );
     }
 
@@ -106,7 +106,7 @@ class PermissionController extends MainController
      */
     public function destroy($id)
     {
-        $this->permissionContract->destroy($id);
+        $this->roleContract->destroy($id);
 
         return $this->response->noContent();
     }

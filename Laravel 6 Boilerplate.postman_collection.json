@@ -289,6 +289,154 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "www.boilerplate.test/api/roles",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Test\",\n\t\"guard_name\" : \"web\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "www.boilerplate.test/api/roles",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "www.boilerplate.test/api/roles/1",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"roles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Test1\",\n\t\"guard_name\" : \"web\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "www.boilerplate.test/api/roles/1",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"roles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "www.boilerplate.test/api/roles/1",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"roles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
@@ -296,7 +444,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ3ZmIxMzljYzA4YTk2MmFkNGVjYzk1ZDQzYzcwODRkOWZiMTEzNDI3NGExYjdiNzk4OWZjOWIxYWJiMGViMTQ3YTA3Y2U2N2IzZDMyZjBmIn0.eyJhdWQiOiI3IiwianRpIjoiZDdmYjEzOWNjMDhhOTYyYWQ0ZWNjOTVkNDNjNzA4NGQ5ZmIxMTM0Mjc0YTFiN2I3OTg5ZmM5YjFhYmIwZWIxNDdhMDdjZTY3YjNkMzJmMGYiLCJpYXQiOjE1NzA3MzI0NDgsIm5iZiI6MTU3MDczMjQ0OCwiZXhwIjoxNjAyMzU0ODQ4LCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.sWANf-bHOFMoPoG5P2n7hw__0jcdSFKe1SfAfL618FWZ1fMHLyXVCyveXQXfeRCgYrK4ensQgyUy2rmgbLNKIQCf5KSmdhA7P8OkJHOU1fznxjwl-rvXYhWHsYgFYIa5idi4nrw3fzR05TSVd4CAwHQGVXJ9RWkZSr4tuqo4gvwv2ObwKiY0SRqTwyw7iLLAnAIC5PWDhlUJI5pgM8IIBQGI1QB6JYC9APaAHBxh7YR2ZOg1I2tpDxBc6VhjIw1Eoli85kRYZhO5rnPc6_te97lmc8sITC94tiFvQKwkIs1Os-5-TtKa94jEd4kwAt_cWD87Ql-FNjxinHdYaETVUotZdx0M9xro7E1lpxX3M7ZmHUy-YGyO9eNbwFV-YY7udd5Ts1_gDY6Hpv5pHXR8jH856bTeR9xbt-vxxjc1-iQRJX5FKfIMREQYBdYfjXxKITZXPoG-q2k07M2tCIRkld_AKfU1G83_OJXgBdN41M8CdY3vLIVxoR0ORfSrMxck4OzHMngWgqDMMaNpgsJDo6ocOnq6NxMqGB8Ibmkwd0rFuRG1nF7q2p72vL7nVqHKPgYFJdL2JcEfmnE3bQVWz_34dOTmYB468h0Z6sluT-1kp-JvXeXLL2vYDWmwhYjAXCJbqSlagOxqfhuC_NOmQc2tQEZf8-y8hn7Hig2aCxI",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjNjMzI3NGUxNjA0MDZkOTI0MWFhMGE1MmM4NTM3ZjM3YzY5MThmMjE5OWExYWMyMmVhMjI2OGYzMjgyMjI5NDE3MzhiYTRmZTVkM2ZlYjQ3In0.eyJhdWQiOiIxIiwianRpIjoiM2MzMjc0ZTE2MDQwNmQ5MjQxYWEwYTUyYzg1MzdmMzdjNjkxOGYyMTk5YTFhYzIyZWEyMjY4ZjMyODIyMjk0MTczOGJhNGZlNWQzZmViNDciLCJpYXQiOjE1NzA5OTk1NjMsIm5iZiI6MTU3MDk5OTU2MywiZXhwIjoxNjAyNjIxOTYzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.p8hxxCFnxiNL5NMW6Ts6OYrdMhyozIQP4rhIV_eWs2QwIE4huBgiVKVVGjVYbbStJAKKM-RwpVw-mOpMPS33yJJX_drhfrFufFsB0Fd79Jd_JqikC3bqz8iotHlq2F_CQXTshs8jln_zXwnDuCCRfocdsPi6Z1X7jX9eeHJHdp26nmvA2-la8qvAEyd3-S7xmQoUmdrG3bZp9g0aC78d4i_Sy2alJ5uK-shPgVlKoTHSH1LTE26uIkIZQbxskgRd0LcRbRfwDkU0uzRzh39hVkZw0MuGA4DMHTiFBBl0eH8St3edPe9UVrA8QxxN82s5-qfC0vGc0EFEExPhEK0VXYhiHMQHsNy17uOzBgOKqyRj0AdEyLjJEJRQoMx1NZAGIz9sxdvbaxLaP3EHyBvKQWXMLgDlEGJUlakwfnxKTWtqUz9dplIXh6usHCFb7Qn9KH5b-1amULgFS65cZTTZzBUzkAP0hnm3WenSDx_l7SU3QqKBOgGc4-wVkstxaC8SPVGOYbo7w9CiAeT5AGRXAI2tCA7ChUPDh8n84T81d86oP-ndg7H5aSuEKOTQqIoAsrBd8sLj_TCJOsL1GuFjL7eiTVJd9KuEP6Bb3JuHqDEwbWuydYUA8GuQ707M24ftZ-c_Z0fIUCaQA218IoRaqkNhlfrkvvKcuo6kjMrHdzc",
 				"type": "string"
 			}
 		]

@@ -27,6 +27,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::apiResources([
         'permissions' => 'PermissionController',
+        'roles'       => 'RoleController',
     ]);
 
 });
