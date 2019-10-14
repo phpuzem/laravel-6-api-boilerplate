@@ -25,8 +25,10 @@ Route::middleware('auth:api')->group(function () {
     Route::post('auth/logout', 'Auth\AuthController@logout')->name('auth.logout');
     Route::get('auth/me', 'Auth\AuthController@me')->name('auth.me');
 
+
     Route::apiResources([
         'permissions' => 'PermissionController',
+        'jobs'        => 'JobController',
     ]);
 
 });
