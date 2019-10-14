@@ -7,6 +7,7 @@ use App\Http\Requests\{RoleStore, RoleUpdate};
 use App\Http\Resources\Role;
 use App\Http\Resources\RoleCollection;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
+use Illuminate\Http\Request;
 
 /**
  * Class RoleController
@@ -109,5 +110,21 @@ class RoleController extends MainController
         $this->roleContract->destroy($id);
 
         return $this->response->noContent();
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param                          $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function syncPermissions(Request $request, $id)
+    {
+        $role = $this->roleContract->show($id);
+
+        $role->syncPermissions($request->input('permissions', []));
+
+        return $this->response->noContent();
+
     }
 }

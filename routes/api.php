@@ -25,6 +25,9 @@ Route::middleware('auth:api')->group(function () {
     Route::post('auth/logout', 'Auth\AuthController@logout')->name('auth.logout');
     Route::get('auth/me', 'Auth\AuthController@me')->name('auth.me');
 
+    Route::post('permissions/{permission}/sync-roles', 'PermissionController@syncRoles');
+    Route::post('roles/{role}/sync-permissions', 'RoleController@syncPermissions');
+
     Route::apiResources([
         'permissions' => 'PermissionController',
         'roles'       => 'RoleController',

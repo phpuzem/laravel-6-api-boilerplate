@@ -7,6 +7,7 @@ use App\Http\Requests\{PermissionStore, PermissionUpdate};
 use App\Http\Resources\Permission;
 use App\Http\Resources\PermissionCollection;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
+use Illuminate\Http\Request;
 
 /**
  * Class PermissionController
@@ -109,5 +110,21 @@ class PermissionController extends MainController
         $this->permissionContract->destroy($id);
 
         return $this->response->noContent();
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param                          $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function syncRoles(Request $request, $id)
+    {
+        $permission = $this->permissionContract->show($id);
+
+        $permission->syncRoles($request->input('roles', []));
+
+        return $this->response->noContent();
+
     }
 }
