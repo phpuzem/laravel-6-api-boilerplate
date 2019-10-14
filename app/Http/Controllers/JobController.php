@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\JobContract;
+use App\Http\Requests\JobStore;
+use App\Http\Requests\JobUpdate;
 use App\Http\Requests\PermissionStore;
 use App\Http\Requests\PermissionUpdate;
 use App\Http\Resources\Job;
@@ -51,11 +53,11 @@ class JobController extends MainController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\PermissionStore $request
+     * @param \App\Http\Requests\JobStore $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(PermissionStore $request)
+    public function store(JobStore $request)
     {
         return $this->response->success(
             new Job($this->jobContract->store($request->only('name', 'description')))
@@ -80,12 +82,12 @@ class JobController extends MainController
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\PermissionUpdate $request
-     * @param int                                 $id
+     * @param \App\Http\Requests\JobUpdate $request
+     * @param int                          $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(PermissionUpdate $request, $id)
+    public function update(JobUpdate $request, $id)
     {
         $this->jobContract->update($request->only('name', 'description'), $id);
 
