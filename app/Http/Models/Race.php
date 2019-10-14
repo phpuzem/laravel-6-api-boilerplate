@@ -5,10 +5,10 @@ namespace App\Http\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Job
+ * Class Race
  * @package App\Http\Models
  */
-class Job extends Model
+class Race extends Model
 {
     /**
      * @var array
@@ -19,10 +19,10 @@ class Job extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function race()
+    public function jobs()
     {
-        return $this->belongsTo(Race::class);
+        return $this->hasMany(Job::class);
     }
 }

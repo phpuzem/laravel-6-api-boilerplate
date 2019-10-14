@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Job extends JsonResource
+class Race extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,7 +19,7 @@ class Job extends JsonResource
             'id'          => $this->id,
             'name'        => $this->name,
             'description' => $this->description,
-            'race'        => new Race($this->whenLoaded('race')),
+            'jobs'        => new JobCollection($this->whenLoaded('jobs')),
             'created_at'  => $this->created_at,
             'updated_at'  => $this->updated_at,
         ];

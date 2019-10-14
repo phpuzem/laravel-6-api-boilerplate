@@ -2,33 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\JobContract;
+use App\Contracts\RaceContract;
 use App\Http\Requests\JobStore;
 use App\Http\Requests\JobUpdate;
-use App\Http\Resources\Job;
-use App\Http\Resources\JobCollection;
+use App\Http\Resources\Race;
+use App\Http\Resources\RaceCollection;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
 
 /**
- * Class JobController
+ * Class RaceController
  * @package App\Http\Controllers
  */
-class JobController extends MainController
+class RaceController extends MainController
 {
 
     /**
-     * @var \App\Contracts\JobContract
+     * @var \App\Contracts\RaceContract
      */
-    protected $jobContract;
+    protected $raceContract;
 
     /**
      * PermissionController constructor.
      *
-     * @param \App\Contracts\JobContract $jobContract
+     * @param \App\Contracts\RaceContract $raceContract
      */
-    public function __construct(JobContract $jobContract)
+    public function __construct(RaceContract $raceContract)
     {
-        $this->jobContract = $jobContract;
+        $this->raceContract = $raceContract;
 
         parent::__construct();
     }
@@ -41,9 +41,9 @@ class JobController extends MainController
     public function index()
     {
         return $this->response->success(
-            new JobCollection($this->jobContract
+            new RaceCollection($this->raceContract
                 ->withCriteria([
-                    new EagerLoad(['race']),
+                    new EagerLoad(['jobs']),
                 ])
                 ->paginate(request('perPage', 15)))
         );
@@ -59,7 +59,7 @@ class JobController extends MainController
     public function store(JobStore $request)
     {
         return $this->response->success(
-            new Job($this->jobContract->store($request->only('name', 'description')))
+            new Race($this->raceContract->store($request->only('name', 'description')))
         );
     }
 
@@ -73,9 +73,9 @@ class JobController extends MainController
     public function show($id)
     {
         return $this->response->success(
-            new Job($this->jobContract
+            new Race($this->raceContract
                 ->withCriteria([
-                    new EagerLoad(['race']),
+                    new EagerLoad(['jobs']),
                 ])
                 ->show($id))
         );
@@ -91,10 +91,10 @@ class JobController extends MainController
      */
     public function update(JobUpdate $request, $id)
     {
-        $this->jobContract->update($request->only('name', 'description'), $id);
+        $this->raceContract->update($request->only('name', 'description'), $id);
 
         return $this->response->success(
-            new Job($this->jobContract->show($id))
+            new Race($this->raceContract->show($id))
         );
     }
 
@@ -107,7 +107,7 @@ class JobController extends MainController
      */
     public function destroy($id)
     {
-        $this->jobContract->destroy($id);
+        $this->raceContract->destroy($id);
 
         return $this->response->noContent();
     }

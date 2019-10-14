@@ -28,9 +28,9 @@ Route::middleware('auth:api')->group(function () {
 
     Route::apiResources([
         'permissions' => 'PermissionController',
+        'races'       => 'RaceController',
         'jobs'        => 'JobController',
     ]);
-
 });
 
 
