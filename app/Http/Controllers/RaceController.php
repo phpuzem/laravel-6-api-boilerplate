@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Contracts\RaceContract;
 use App\Http\Requests\JobStore;
 use App\Http\Requests\JobUpdate;
+use App\Http\Requests\RaceStore;
+use App\Http\Requests\RaceUpdate;
 use App\Http\Resources\Race;
 use App\Http\Resources\RaceCollection;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
@@ -52,11 +54,11 @@ class RaceController extends MainController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\JobStore $request
+     * @param \App\Http\Requests\RaceStore $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(JobStore $request)
+    public function store(RaceStore $request)
     {
         return $this->response->success(
             new Race($this->raceContract->store($request->only('name', 'description')))
@@ -84,12 +86,12 @@ class RaceController extends MainController
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\JobUpdate $request
-     * @param int                          $id
+     * @param \App\Http\Requests\RaceUpdate $request
+     * @param int                           $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(JobUpdate $request, $id)
+    public function update(RaceUpdate $request, $id)
     {
         $this->raceContract->update($request->only('name', 'description'), $id);
 
