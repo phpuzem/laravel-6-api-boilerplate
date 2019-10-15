@@ -11,10 +11,18 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        \App\Http\Models\Race::updateOrCreate([
+            'name' => 'Horde',
+        ], [
+            'name'        => 'Horde',
+            'description' => 'Horde Description',
+        ]);
+
         \App\Http\Models\User::updateOrCreate([
             'email' => 'destek@phpuzem.com',
         ], [
-            'username'     => 'halilcosdu',
+            'race_id'  => 1,
+            'username' => 'halilcosdu',
             'email'    => 'destek@phpuzem.com',
             'password' => 12345678,
         ]);

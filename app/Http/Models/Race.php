@@ -25,4 +25,12 @@ class Race extends Model
     {
         return $this->hasMany(Job::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

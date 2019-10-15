@@ -52,4 +52,12 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo|\Illuminate\Database\Query\Builder
+     */
+    public function race()
+    {
+        return $this->belongsTo(Race::class)->whereNotNull('race_id');
+    }
 }
