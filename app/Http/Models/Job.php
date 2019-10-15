@@ -26,4 +26,12 @@ class Job extends Model
     {
         return $this->belongsTo(Race::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function characters()
+    {
+        return $this->hasMany(Character::class);
+    }
 }

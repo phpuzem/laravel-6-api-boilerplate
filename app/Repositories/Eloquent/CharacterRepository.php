@@ -3,7 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Contracts\{CharacterContract};
-use App\Http\Models\Job;
+use App\Http\Models\Character;
 use App\Repositories\RepositoryAbstract;
 
 /**
@@ -17,7 +17,7 @@ class CharacterRepository extends RepositoryAbstract implements CharacterContrac
      */
     public function entity()
     {
-        return Job::class;
+        return Character::class;
     }
 
 }
