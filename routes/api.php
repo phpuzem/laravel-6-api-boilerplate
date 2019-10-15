@@ -31,6 +31,7 @@ Route::middleware('auth:api')->group(function () {
         'races'       => 'RaceController',
         'jobs'        => 'JobController',
         'users'       => 'UserController',
+        'characters'  => 'CharacterController',
     ]);
 });
 

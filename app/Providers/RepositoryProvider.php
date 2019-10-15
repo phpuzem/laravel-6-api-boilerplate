@@ -35,5 +35,6 @@ class RepositoryProvider extends ServiceProvider
         $this->app->bind(JobContract::class, JobRepository::class);
         $this->app->bind(RaceContract::class, RaceRepository::class);
         $this->app->bind(UserContract::class, UserRepository::class);
+        $this->app->bind(JobContract::class, JobRepository::class);
     }
 }
