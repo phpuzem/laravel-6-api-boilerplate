@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\Auth;
 
-use App\Http\Resources\Race;
+use App\Http\Resources\CharacterCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class User extends JsonResource
@@ -19,6 +19,7 @@ class User extends JsonResource
         return [
             'id'                => $this->id,
             'race_id'           => $this->race_id,
+            'characters'        => new CharacterCollection($this->characters),
             'username'          => $this->username,
             'email'             => $this->email,
             'email_verified_at' => $this->email_verified_at,
