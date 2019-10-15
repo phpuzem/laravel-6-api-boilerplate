@@ -19,7 +19,7 @@ class User extends JsonResource
         return [
             'id'                => $this->id,
             'race_id'           => $this->race_id,
-            'race'              => new Race($this->whenLoaded('race')),
+            'race'              => $this->race,
             'username'          => $this->username,
             'email'             => $this->email,
             'email_verified_at' => $this->email_verified_at,
