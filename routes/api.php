@@ -24,7 +24,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth:api')->group(function () {
     Route::post('auth/logout', 'Auth\AuthController@logout')->name('auth.logout');
     Route::get('auth/me', 'Auth\AuthController@me')->name('auth.me');
-
+    Route::get('races/{race}/sync', 'RaceController@sync');
 
     Route::apiResources([
         'permissions' => 'PermissionController',

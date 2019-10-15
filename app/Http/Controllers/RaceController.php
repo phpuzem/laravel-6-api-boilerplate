@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\RaceContract;
-use App\Http\Requests\JobStore;
-use App\Http\Requests\JobUpdate;
 use App\Http\Requests\RaceStore;
 use App\Http\Requests\RaceUpdate;
 use App\Http\Resources\Race;
@@ -110,6 +108,20 @@ class RaceController extends MainController
     public function destroy($id)
     {
         $this->raceContract->destroy($id);
+
+        return $this->response->noContent();
+    }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function sync($id)
+    {
+        $user          = auth()->user();
+        $user->race_id = $id;
+        $user->save();
 
         return $this->response->noContent();
     }
