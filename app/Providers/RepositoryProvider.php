@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Contracts\CharacterContract;
 use App\Contracts\JobContract;
 use App\Contracts\PermissionContract;
 use App\Contracts\RaceContract;
 use App\Contracts\UserContract;
+use App\Repositories\Eloquent\CharacterRepository;
 use App\Repositories\Eloquent\JobRepository;
 use App\Repositories\Eloquent\PermissionRepository;
 use App\Repositories\Eloquent\RaceRepository;
@@ -36,5 +38,6 @@ class RepositoryProvider extends ServiceProvider
         $this->app->bind(RaceContract::class, RaceRepository::class);
         $this->app->bind(UserContract::class, UserRepository::class);
         $this->app->bind(JobContract::class, JobRepository::class);
+        $this->app->bind(CharacterContract::class, CharacterRepository::class);
     }
 }
