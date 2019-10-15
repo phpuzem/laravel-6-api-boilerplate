@@ -25,6 +25,7 @@ class CharacterUpdate extends Request
     public function rules()
     {
         return [
+            'user_id'       => 'required|exists:users,id',
             'job_id'        => 'required|exists:jobs,id',
             'appearance_id' => 'required',
             'name'          => [

@@ -7,7 +7,7 @@ use App\Http\Models\Character;
 use App\Repositories\RepositoryAbstract;
 
 /**
- * Class JobRepository
+ * Class CharacterRepository
  * @package App\Repositories
  */
 class CharacterRepository extends RepositoryAbstract implements CharacterContract

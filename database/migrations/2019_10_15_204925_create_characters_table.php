@@ -15,6 +15,7 @@ class CreateCharactersTable extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('job_id');
             $table->unsignedBigInteger('appearance_id');
             $table->string('name');
@@ -27,6 +28,11 @@ class CreateCharactersTable extends Migration
             $table->foreign('job_id')
                 ->references('id')
                 ->on('jobs')
+                ->onDelete('cascade');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
                 ->onDelete('cascade');
         });
     }

@@ -60,4 +60,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Race::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function characters()
+    {
+        return $this->hasMany(Character::class);
+    }
 }

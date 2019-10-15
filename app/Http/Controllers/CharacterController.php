@@ -7,7 +7,6 @@ use App\Http\Requests\CharacterStore;
 use App\Http\Requests\CharacterUpdate;
 use App\Http\Resources\Character;
 use App\Http\Resources\CharacterCollection;
-use App\Http\Resources\Job;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
 
 /**
@@ -60,7 +59,8 @@ class CharacterController extends MainController
     public function store(CharacterStore $request)
     {
         return $this->response->success(
-            new Character($this->characterContract->store($request->only('job_id', 'appearance_id', 'name', 'gender')))
+            new Character($this->characterContract->store($request->only('user_id', 'job_id', 'appearance_id', 'name',
+                'gender')))
         );
     }
 
@@ -92,7 +92,7 @@ class CharacterController extends MainController
      */
     public function update(CharacterUpdate $request, $id)
     {
-        $this->characterContract->update($request->only('job_id', 'appearance_id', 'name', 'gender'), $id);
+        $this->characterContract->update($request->only('user_id', 'job_id', 'appearance_id', 'name', 'gender'), $id);
 
         return $this->response->success(
             new Character($this->characterContract->show($id))

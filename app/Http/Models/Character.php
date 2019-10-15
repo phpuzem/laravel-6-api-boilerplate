@@ -14,6 +14,7 @@ class Character extends Model
      * @var array
      */
     protected $fillable = [
+        'user_id',
         'job_id',
         'appearance_id',
         'name',
@@ -26,5 +27,13 @@ class Character extends Model
     public function job()
     {
         return $this->belongsTo(Job::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
