@@ -31,6 +31,6 @@ class Race extends Model
      */
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class)->whereNotNull('race_id');
     }
 }

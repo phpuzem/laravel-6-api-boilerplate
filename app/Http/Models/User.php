@@ -58,6 +58,6 @@ class User extends Authenticatable
      */
     public function race()
     {
-        return $this->belongsTo(Race::class)->whereNotNull('race_id');
+        return $this->belongsTo(Race::class);
     }
 }
