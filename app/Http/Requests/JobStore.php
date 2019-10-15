@@ -23,6 +23,7 @@ class JobStore extends Request
     public function rules()
     {
         return [
+            'race_id'     => 'required|exists:races,id',
             'name'        => 'required|unique:jobs',
             'description' => 'required',
         ];

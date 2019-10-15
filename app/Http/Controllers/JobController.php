@@ -59,7 +59,7 @@ class JobController extends MainController
     public function store(JobStore $request)
     {
         return $this->response->success(
-            new Job($this->jobContract->store($request->only('name', 'description')))
+            new Job($this->jobContract->store($request->only('race_id', 'name', 'description')))
         );
     }
 
@@ -91,7 +91,7 @@ class JobController extends MainController
      */
     public function update(JobUpdate $request, $id)
     {
-        $this->jobContract->update($request->only('name', 'description'), $id);
+        $this->jobContract->update($request->only('race_id', 'name', 'description'), $id);
 
         return $this->response->success(
             new Job($this->jobContract->show($id))
