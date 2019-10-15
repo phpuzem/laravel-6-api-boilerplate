@@ -45,7 +45,7 @@ class RaceController extends MainController
         return $this->response->success(
             new RaceCollection($this->raceContract
                 ->withCriteria([
-                    new EagerLoad(['jobs', 'users']),
+                    new EagerLoad(['jobs']),
                 ])
                 ->paginate(request('perPage', 15)))
         );
@@ -77,7 +77,7 @@ class RaceController extends MainController
         return $this->response->success(
             new Race($this->raceContract
                 ->withCriteria([
-                    new EagerLoad(['jobs', 'users']),
+                    new EagerLoad(['jobs']),
                 ])
                 ->show($id))
         );
