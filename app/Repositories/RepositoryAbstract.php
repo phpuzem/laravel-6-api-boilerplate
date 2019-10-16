@@ -59,6 +59,16 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
     ###############################################################
     ################# Shared For All Repositories #################
     ###############################################################
+
+    /**
+     * @param $class
+     *
+     * @return mixed
+     */
+    public function observe($class)
+    {
+        return $this->entity->observe($class);
+    }
     /**
      * @return mixed
      */

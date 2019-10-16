@@ -10,6 +10,13 @@ namespace App\Contracts;
 interface RepositoryContract
 {
     /**
+     * @param $class
+     *
+     * @return mixed
+     */
+    public function observe($class);
+
+    /**
      * @return mixed
      */
     public function all();

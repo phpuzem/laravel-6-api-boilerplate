@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
             'description' => 'Horde Description',
         ]);
 
+
         \App\Http\Models\User::updateOrCreate([
             'email' => 'destek@phpuzem.com',
         ], [

@@ -20,4 +20,5 @@ class CharacterRepository extends RepositoryAbstract implements CharacterContrac
         return Character::class;
     }
 
+
 }

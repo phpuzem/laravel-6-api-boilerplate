@@ -58,9 +58,9 @@ class CharacterController extends MainController
      */
     public function store(CharacterStore $request)
     {
-        if ($request->user()->characters->count() > 4) {
+        if ($request->user()->characters->count() > 3) {
             return $this->response->fail([
-                'errors' => 'You can have only 4 characters. ',
+                'errors' => 'You can have only 4 characters.',
             ]);
         }
 
