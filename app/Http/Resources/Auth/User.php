@@ -20,8 +20,8 @@ class User extends JsonResource
         return [
             'id'                => $this->id,
             'race_id'           => $this->race_id,
-            'race'              => $this->whenLoaded(new Race($this->race)),
-            'characters'        => $this->whenLoaded(new CharacterCollection($this->characters)),
+            'race'              => $this->whenLoaded('race', new Race($this->race)),
+            'characters'        => $this->whenLoaded('characters', new CharacterCollection($this->characters)),
             'username'          => $this->username,
             'email'             => $this->email,
             'email_verified_at' => $this->email_verified_at,
