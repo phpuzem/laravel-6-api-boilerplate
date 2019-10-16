@@ -58,8 +58,15 @@ class CharacterController extends MainController
      */
     public function store(CharacterStore $request)
     {
+        if ($request->user()->characters->count() > 4) {
+            return $this->response->fail([
+                'errors' => 'You can have only 4 characters. ',
+            ]);
+        }
+
         return $this->response->success(
-            new Character($this->characterContract->store($request->only('user_id', 'job_id', 'appearance_id', 'name',
+            new Character($this->characterContract->store($request->only('user_id', 'job_id', 'appearance_id',
+                'name',
                 'gender')))
         );
     }

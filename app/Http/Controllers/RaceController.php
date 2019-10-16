@@ -8,6 +8,7 @@ use App\Http\Requests\RaceUpdate;
 use App\Http\Resources\Race;
 use App\Http\Resources\RaceCollection;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
+use Illuminate\Http\Request;
 
 /**
  * Class RaceController
@@ -113,13 +114,14 @@ class RaceController extends MainController
     }
 
     /**
-     * @param $id
+     * @param \Illuminate\Http\Request $request
+     * @param                          $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function sync($id)
+    public function sync(Request $request, $id)
     {
-        $user          = auth()->user();
+        $user          = $request->user();
         $user->race_id = $id;
         $user->save();
 
