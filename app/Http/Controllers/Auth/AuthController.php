@@ -52,7 +52,7 @@ class AuthController extends MainController
      */
     public function me(Request $request)
     {
-        return $this->response->success(new User($request->user()));
+        return $this->response->success(new User($request->user()->load('race', 'characters')));
     }
 
     /**
