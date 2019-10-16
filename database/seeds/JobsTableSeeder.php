@@ -16,7 +16,7 @@ class JobsTableSeeder extends Seeder
             'name'    => 'Warrior',
         ], [
             'name'        => 'Warrior',
-            'description' => 'Warrior Description',
+            'description' => 'Warrior Horde Description',
         ]);
 
         \App\Http\Models\Job::updateOrCreate([
@@ -24,7 +24,7 @@ class JobsTableSeeder extends Seeder
             'name'    => 'Hunter',
         ], [
             'name'        => 'Hunter',
-            'description' => 'Hunter Description',
+            'description' => 'Hunter Horde Description',
         ]);
 
         \App\Http\Models\Job::updateOrCreate([
@@ -32,7 +32,7 @@ class JobsTableSeeder extends Seeder
             'name'    => 'Magician',
         ], [
             'name'        => 'Magician',
-            'description' => 'Magician Description',
+            'description' => 'Magician Horde Description',
         ]);
 
         \App\Http\Models\Job::updateOrCreate([
@@ -40,7 +40,7 @@ class JobsTableSeeder extends Seeder
             'name'    => 'Priest',
         ], [
             'name'        => 'Priest',
-            'description' => 'Priest Description',
+            'description' => 'Priest Horde Description',
         ]);
 
         \App\Http\Models\Job::updateOrCreate([
@@ -48,7 +48,7 @@ class JobsTableSeeder extends Seeder
             'name'    => 'Warrior',
         ], [
             'name'        => 'Warrior',
-            'description' => 'Warrior Description',
+            'description' => 'Warrior Ally Description',
         ]);
 
         \App\Http\Models\Job::updateOrCreate([
@@ -56,7 +56,7 @@ class JobsTableSeeder extends Seeder
             'name'    => 'Hunter',
         ], [
             'name'        => 'Hunter',
-            'description' => 'Hunter Description',
+            'description' => 'Hunter Ally Description',
         ]);
 
         \App\Http\Models\Job::updateOrCreate([
@@ -64,7 +64,7 @@ class JobsTableSeeder extends Seeder
             'name'    => 'Magician',
         ], [
             'name'        => 'Magician',
-            'description' => 'Magician Description',
+            'description' => 'Magician Ally Description',
         ]);
 
         \App\Http\Models\Job::updateOrCreate([
@@ -72,7 +72,7 @@ class JobsTableSeeder extends Seeder
             'name'    => 'Priest',
         ], [
             'name'        => 'Priest',
-            'description' => 'Priest Description',
+            'description' => 'Priest Ally Description',
         ]);
     }
 }
