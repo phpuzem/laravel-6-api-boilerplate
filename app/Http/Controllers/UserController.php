@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\UserContract;
-use App\Http\Requests\{UserStore, UserUpdate};
+use App\Http\Requests\{SyncRolesAndPermissions, UserStore, UserUpdate};
 use App\Http\Resources\Auth\User;
 use App\Http\Resources\Auth\UserCollection;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
@@ -112,6 +112,21 @@ class UserController extends MainController
     public function destroy($id)
     {
         $this->userContract->destroy($id);
+
+        return $this->response->noContent();
+    }
+
+    /**
+     * @param \App\Http\Requests\SyncRolesAndPermissions $request
+     * @param                                            $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function syncRolesAndPermissions(SyncRolesAndPermissions $request, $id)
+    {
+        $user = $this->userContract->show($id);
+        $user->syncRoles($request->input('roles', []));
+        $user->syncPermissions($request->input('permissions', []));
 
         return $this->response->noContent();
     }

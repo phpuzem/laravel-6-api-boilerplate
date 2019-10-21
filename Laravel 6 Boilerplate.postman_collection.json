@@ -437,6 +437,209 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "www.boilerplate.test/api/users",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Test\",\n\t\"guard_name\" : \"web\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "www.boilerplate.test/api/users",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "www.boilerplate.test/api/users/1",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Test1\",\n\t\"guard_name\" : \"web\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "www.boilerplate.test/api/users/1",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "www.boilerplate.test/api/users/1",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SyncRolesAndPermissions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"permissions\" : [31,32],\n\t\"roles\": [3]\n}"
+						},
+						"url": {
+							"raw": "www.boilerplate.test/api/users/2/sync-roles-and-permissions",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"users",
+								"2",
+								"sync-roles-and-permissions"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "759d09f1-c3b1-4950-b28e-bba8faa7fade",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "91472839-0f39-4ece-8460-775efd00d7bd",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
@@ -444,7 +647,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjNjMzI3NGUxNjA0MDZkOTI0MWFhMGE1MmM4NTM3ZjM3YzY5MThmMjE5OWExYWMyMmVhMjI2OGYzMjgyMjI5NDE3MzhiYTRmZTVkM2ZlYjQ3In0.eyJhdWQiOiIxIiwianRpIjoiM2MzMjc0ZTE2MDQwNmQ5MjQxYWEwYTUyYzg1MzdmMzdjNjkxOGYyMTk5YTFhYzIyZWEyMjY4ZjMyODIyMjk0MTczOGJhNGZlNWQzZmViNDciLCJpYXQiOjE1NzA5OTk1NjMsIm5iZiI6MTU3MDk5OTU2MywiZXhwIjoxNjAyNjIxOTYzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.p8hxxCFnxiNL5NMW6Ts6OYrdMhyozIQP4rhIV_eWs2QwIE4huBgiVKVVGjVYbbStJAKKM-RwpVw-mOpMPS33yJJX_drhfrFufFsB0Fd79Jd_JqikC3bqz8iotHlq2F_CQXTshs8jln_zXwnDuCCRfocdsPi6Z1X7jX9eeHJHdp26nmvA2-la8qvAEyd3-S7xmQoUmdrG3bZp9g0aC78d4i_Sy2alJ5uK-shPgVlKoTHSH1LTE26uIkIZQbxskgRd0LcRbRfwDkU0uzRzh39hVkZw0MuGA4DMHTiFBBl0eH8St3edPe9UVrA8QxxN82s5-qfC0vGc0EFEExPhEK0VXYhiHMQHsNy17uOzBgOKqyRj0AdEyLjJEJRQoMx1NZAGIz9sxdvbaxLaP3EHyBvKQWXMLgDlEGJUlakwfnxKTWtqUz9dplIXh6usHCFb7Qn9KH5b-1amULgFS65cZTTZzBUzkAP0hnm3WenSDx_l7SU3QqKBOgGc4-wVkstxaC8SPVGOYbo7w9CiAeT5AGRXAI2tCA7ChUPDh8n84T81d86oP-ndg7H5aSuEKOTQqIoAsrBd8sLj_TCJOsL1GuFjL7eiTVJd9KuEP6Bb3JuHqDEwbWuydYUA8GuQ707M24ftZ-c_Z0fIUCaQA218IoRaqkNhlfrkvvKcuo6kjMrHdzc",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjVhNTMyNjI5MjZhM2M3YmVmMWZiMDg4ZDE3NWY4OWE1NjAyNzUyNzIyNWMwYzY0YjA2NTlmMmExNWYwOTQ5YzllMjVhZjQ4MjQ1YjVkYTIzIn0.eyJhdWQiOiIxIiwianRpIjoiNWE1MzI2MjkyNmEzYzdiZWYxZmIwODhkMTc1Zjg5YTU2MDI3NTI3MjI1YzBjNjRiMDY1OWYyYTE1ZjA5NDljOWUyNWFmNDgyNDViNWRhMjMiLCJpYXQiOjE1NzE2NTA2MDcsIm5iZiI6MTU3MTY1MDYwNywiZXhwIjoxNjAzMjczMDA3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.dUl4ovt5S5F4zzFOvGbww0TK0l2MsxYerxkvm-M8agB1a4WmYyFzC5QMDHlnfzGuwy02rB0RIG_uo1g6DC2yFbZ5ltMudBTQeFmaHCMur1aZO-Sy8ZhZYYjR7DHbJyNHypS3GvhjwBNNQHoz4PPFYspHjv91nbxQVKCNLL9NxKfc_D3sSs-XkP8bcGv7ZQvAGUMD3Yo8nfmPiQfPLfTRSOGIB3VqHQS9NZtn9OGVSiYBuxFOzhDu4Tz4GniEAan_YZxDV8yPf9jrCOtxL7gGzdy0dXG-aZZYWtcCX1OmSZbnGjVqSSxADK8r0TwKo1kmZOlpu5raJxiuDRro281oNaCG0rjjbD517xZgCKZiks-ilfkxwrm4E7bz3QVazCQwtuPEuew4pO8JGflxrPzCZeb8OvyWtPgwAfdXSuep1fROYdrS_j5dVwI7lHTmCLpkvogC4vxUkDyzm_tA0rkrefZlF_-DPk6sOr--QITKqkHBjzPjOEWNSQS1COXsYhE6gc1tYLG7lFxmwLbvglRvA_uUhLgxqd5lt3QaV9lw2dBbp87iWTKXVLdFmk9JxZwG8DwMAVu3cAjnXi_jZevWqg-xhPNiU4rB2kZ0244o9uoxjhMBOrpgl7k1SfjgNh4Tndc8Gq458bvV-sL3-NS2UFx5-w_SIlSKWkto0qy_EJo",
 				"type": "string"
 			}
 		]

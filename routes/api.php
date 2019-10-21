@@ -27,7 +27,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('permissions/{permission}/sync-roles', 'PermissionController@syncRoles');
     Route::post('roles/{role}/sync-permissions', 'RoleController@syncPermissions');
-
+    Route::post('users/{user}/sync-roles-and-permissions', 'UserController@syncRolesAndPermissions');
     Route::apiResources([
         'permissions' => 'PermissionController',
         'roles'       => 'RoleController',
