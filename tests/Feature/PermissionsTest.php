@@ -6,6 +6,7 @@ use App\Http\Models\User;
 use Illuminate\Support\Facades\Artisan;
 use Laravel\Passport\Passport;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 /**
@@ -98,4 +99,28 @@ class PermissionsTest extends TestCase
         $this->json('DELETE', 'api/permissions/' . $permission->id . '')
             ->assertStatus(204);
     }
+
+    ################################################################################
+    ############################ Relation Tests ####################################
+    ################################################################################
+
+    /**
+     *
+     */
+    public function test_it_permission_syncing_with_roles()
+    {
+        $roles = factory(Role::class, 5)->create([
+            'guard_name' => 'web',
+        ]);
+
+        $permission = factory(Permission::class)->create([
+            'guard_name' => 'web',
+        ]);
+
+        $this->json('POST', 'api/permissions/' . $permission->id . '/sync-roles', [
+            'roles' => $roles->pluck('id'),
+        ])
+            ->assertStatus(204);;
+    }
+
 }
