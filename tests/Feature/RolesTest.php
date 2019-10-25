@@ -5,14 +5,14 @@ namespace Tests\Feature;
 use App\Http\Models\User;
 use Illuminate\Support\Facades\Artisan;
 use Laravel\Passport\Passport;
-use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 /**
- * Class PermissionsTest
+ * Class RolesTest
  * @package Tests\Feature
  */
-class PermissionsTest extends TestCase
+class RolesTest extends TestCase
 {
     /**
      * @var mixed
@@ -37,9 +37,9 @@ class PermissionsTest extends TestCase
     /**
      *
      */
-    public function test_it_get_all_permissions()
+    public function test_it_get_all_roles()
     {
-        $this->json('GET', 'api/permissions')
+        $this->json('GET', 'api/roles')
             ->assertJsonFragment([
                 'status' => 'success',
             ]);
@@ -48,10 +48,10 @@ class PermissionsTest extends TestCase
     /**
      *
      */
-    public function test_it_storing_permission()
+    public function test_it_storing_role()
     {
-        $this->json('POST', 'api/permissions', [
-            'name'       => 'Test Permission',
+        $this->json('POST', 'api/roles', [
+            'name'       => 'Test Role',
             'guard_name' => 'web',
         ])
             ->assertJsonFragment([
@@ -62,40 +62,40 @@ class PermissionsTest extends TestCase
     /**
      *
      */
-    public function test_it_showing_permission()
+    public function test_it_showing_role()
     {
-        $permission = factory(Permission::class)->create();
+        $role = factory(Role::class)->create();
 
-        $this->json('GET', 'api/permissions/' . $permission->id . '')
+        $this->json('GET', 'api/roles/' . $role->id . '')
             ->assertJsonFragment([
-                'name' => $permission->name,
+                'name' => $role->name,
             ]);
     }
 
     /**
      *
      */
-    public function test_it_updating_permission()
+    public function test_it_updating_role()
     {
-        $permission = factory(Permission::class)->create();
+        $role = factory(Role::class)->create();
 
-        $this->json('PATCH', 'api/permissions/' . $permission->id . '', [
-            'name'       => 'Updated Permission',
+        $this->json('PATCH', 'api/roles/' . $role->id . '', [
+            'name'       => 'Updated Role',
             'guard_name' => 'web',
         ])
             ->assertJsonFragment([
-                'name' => 'Updated Permission',
+                'name' => 'Updated Role',
             ]);
     }
 
     /**
      *
      */
-    public function test_it_destroying_permission()
+    public function test_it_destroying_role()
     {
-        $permission = factory(Permission::class)->create();
+        $role = factory(Role::class)->create();
 
-        $this->json('DELETE', 'api/permissions/' . $permission->id . '')
+        $this->json('DELETE', 'api/roles/' . $role->id . '')
             ->assertStatus(204);
     }
 }
