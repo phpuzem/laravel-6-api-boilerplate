@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Http\Models\User;
+use App\Models\User;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Passwords\PasswordBrokerManager;
@@ -24,7 +24,7 @@ class AuthService
      */
     protected $passwordBrokerManager;
     /**
-     * @var \App\Http\Models\User
+     * @var \App\Models\User
      */
     protected $user;
 
@@ -33,7 +33,7 @@ class AuthService
      *
      * @param \Illuminate\Auth\AuthManager $authManager
      * @param \Illuminate\Auth\Passwords\PasswordBrokerManager $passwordBrokerManager
-     * @param \App\Http\Models\User $user
+     * @param \App\Models\User $user
      */
     public function __construct(AuthManager $authManager, PasswordBrokerManager $passwordBrokerManager, User $user)
     {
@@ -68,7 +68,7 @@ class AuthService
 
     /**
      * @param \Illuminate\Http\Request   $request
-     * @param \App\Http\Models\User|null $user
+     * @param \App\Models\User|null $user
      *
      * @return \Laravel\Passport\PersonalAccessTokenResult
      */

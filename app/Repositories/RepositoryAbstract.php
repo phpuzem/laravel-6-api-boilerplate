@@ -6,6 +6,7 @@ namespace App\Repositories;
 use App\Contracts\{CriteriaContract, RepositoryContract};
 use Illuminate\Support\Arr;
 use Mockery\Exception;
+use Spatie\Permission\Models\Role;
 
 /**
  * Class RepositoryAbstract

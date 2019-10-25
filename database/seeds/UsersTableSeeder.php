@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Http\Models\User::updateOrCreate([
+        \App\Models\User::updateOrCreate([
             'email' => 'destek@phpuzem.com',
         ], [
             'name'     => 'Halil Coşdu',
