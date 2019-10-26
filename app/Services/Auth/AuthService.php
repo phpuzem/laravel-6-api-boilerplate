@@ -33,7 +33,7 @@ class AuthService
      *
      * @param \Illuminate\Auth\AuthManager                     $authManager
      * @param \Illuminate\Auth\Passwords\PasswordBrokerManager $passwordBrokerManager
-     * @param \App\Models\User                            $user
+     * @param \App\Models\User                                 $user
      */
     public function __construct(AuthManager $authManager, PasswordBrokerManager $passwordBrokerManager, User $user)
     {
@@ -67,8 +67,8 @@ class AuthService
     }
 
     /**
-     * @param \Illuminate\Http\Request   $request
-     * @param \App\Models\User|null $user
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\User|null    $user
      *
      * @return \Laravel\Passport\PersonalAccessTokenResult
      */
@@ -84,9 +84,9 @@ class AuthService
      */
     public function sendForgotPasswordResetLink(Request $request)
     {
-        $response = $this->passwordBrokerManager->sendResetLink([
-            $request->only('email'),
-        ]);
+        $response = $this->passwordBrokerManager->sendResetLink(
+            $request->only('email')
+        );
 
         return $response === Password::RESET_LINK_SENT;
     }

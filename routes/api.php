@@ -16,7 +16,7 @@
 Route::middleware('guest')->group(function () {
     Route::post('auth/login', 'Auth\AuthController@login')->name('auth.login');
     Route::post('auth/register', 'Auth\AuthController@register')->name('auth.register');
-    Route::post('auth/forgot-password', 'Auth\AuthController@sendForgotPasswordLink')->name('password.send');
+    Route::post('auth/forgot-password', 'Auth\AuthController@sendForgotPasswordResetLink')->name('password.send');
     Route::post('auth/reset-password', 'Auth\AuthController@resetPassword')->name('password.reset');
 });
 

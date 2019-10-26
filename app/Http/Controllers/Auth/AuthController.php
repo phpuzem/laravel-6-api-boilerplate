@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\MainController;
+use App\Http\Requests\Auth\ForgotPassword;
 use App\Http\Requests\Auth\Login;
 use App\Http\Requests\Auth\Register;
+use App\Http\Requests\Auth\ResetPassword;
 use App\Http\Resources\Auth\User;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
@@ -75,6 +77,40 @@ class AuthController extends MainController
                 ],
             ])
         );
+    }
+
+    /**
+     * @param \App\Http\Requests\Auth\ForgotPassword $request
+     * @param \App\Services\AuthService              $authService
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function sendForgotPasswordResetLink(ForgotPassword $request, AuthService $authService)
+    {
+        if (! $authService->sendForgotPasswordResetLink($request)) {
+            return $this->response->fail();
+        }
+
+        return $this->response->success([
+            'message' => $request->input('email') . ' password reset link sent!',
+        ]);
+    }
+
+    /**
+     * @param \App\Http\Requests\Auth\ResetPassword $request
+     * @param \App\Services\AuthService             $authService
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function resetPassword(ResetPassword $request, AuthService $authService)
+    {
+        if (! $authService->resetPassword($request)) {
+            return $this->response->fail();
+        }
+
+        return $this->response->success([
+            'message' => $request->input('email') . ' password changed!',
+        ]);
     }
 
     /**

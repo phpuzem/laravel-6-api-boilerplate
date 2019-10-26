@@ -138,6 +138,90 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "sendForgotPasswordResetLink",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"destek@phpuzem.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "www.boilerplate.test/api/auth/forgot-password",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resetPassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"destek@phpuzem.com\",\n\t\"password\" : 12345678,\n\t\"password_confirmatin\" : 12345678,\n\t\"token\" : \"some Token\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "www.boilerplate.test/api/auth/reset-password",
+							"host": [
+								"www",
+								"boilerplate",
+								"test"
+							],
+							"path": [
+								"api",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -647,7 +731,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjVhNTMyNjI5MjZhM2M3YmVmMWZiMDg4ZDE3NWY4OWE1NjAyNzUyNzIyNWMwYzY0YjA2NTlmMmExNWYwOTQ5YzllMjVhZjQ4MjQ1YjVkYTIzIn0.eyJhdWQiOiIxIiwianRpIjoiNWE1MzI2MjkyNmEzYzdiZWYxZmIwODhkMTc1Zjg5YTU2MDI3NTI3MjI1YzBjNjRiMDY1OWYyYTE1ZjA5NDljOWUyNWFmNDgyNDViNWRhMjMiLCJpYXQiOjE1NzE2NTA2MDcsIm5iZiI6MTU3MTY1MDYwNywiZXhwIjoxNjAzMjczMDA3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.dUl4ovt5S5F4zzFOvGbww0TK0l2MsxYerxkvm-M8agB1a4WmYyFzC5QMDHlnfzGuwy02rB0RIG_uo1g6DC2yFbZ5ltMudBTQeFmaHCMur1aZO-Sy8ZhZYYjR7DHbJyNHypS3GvhjwBNNQHoz4PPFYspHjv91nbxQVKCNLL9NxKfc_D3sSs-XkP8bcGv7ZQvAGUMD3Yo8nfmPiQfPLfTRSOGIB3VqHQS9NZtn9OGVSiYBuxFOzhDu4Tz4GniEAan_YZxDV8yPf9jrCOtxL7gGzdy0dXG-aZZYWtcCX1OmSZbnGjVqSSxADK8r0TwKo1kmZOlpu5raJxiuDRro281oNaCG0rjjbD517xZgCKZiks-ilfkxwrm4E7bz3QVazCQwtuPEuew4pO8JGflxrPzCZeb8OvyWtPgwAfdXSuep1fROYdrS_j5dVwI7lHTmCLpkvogC4vxUkDyzm_tA0rkrefZlF_-DPk6sOr--QITKqkHBjzPjOEWNSQS1COXsYhE6gc1tYLG7lFxmwLbvglRvA_uUhLgxqd5lt3QaV9lw2dBbp87iWTKXVLdFmk9JxZwG8DwMAVu3cAjnXi_jZevWqg-xhPNiU4rB2kZ0244o9uoxjhMBOrpgl7k1SfjgNh4Tndc8Gq458bvV-sL3-NS2UFx5-w_SIlSKWkto0qy_EJo",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjMzNWJkNDc4OTY1MjhjYzI0MGJlNGJkMmE0ZTgyNGJjYzBjZWY1OTA3ODIwYWM5OWE1NTJjMjE0NGQzZjYyMjQzMTVjNTE2ZjFkM2VmYjAxIn0.eyJhdWQiOiI5IiwianRpIjoiMzM1YmQ0Nzg5NjUyOGNjMjQwYmU0YmQyYTRlODI0YmNjMGNlZjU5MDc4MjBhYzk5YTU1MmMyMTQ0ZDNmNjIyNDMxNWM1MTZmMWQzZWZiMDEiLCJpYXQiOjE1NzIwOTExMzcsIm5iZiI6MTU3MjA5MTEzNywiZXhwIjoxNjAzNzEzNTM3LCJzdWIiOiI5Iiwic2NvcGVzIjpbXX0.uZSK7qwaEKrqck8u3ZKCiZy_c8E9tke4JDwN2EGBy0P0uVoSVW34ryata7Xs_on3glnaAXkXkQ1kj74aI75tvrcr614mGpBMXyExoVToifeIjHeybIhzxOKR1NwRWx-zCtM6gnBl3ytwOyB2Oo4dxO4sRp5WTiT_0qo6WlXCGcoRJ6SboZAyiOp5LbtdGOrtzvpJvCvbbxvGwIWqBBCXiyIxZbiR5TusGVpfVBoLxTHURruDlganKcvfQ3mZ1fa81CZ6-BGVlksPz16lkG83i_UiXSz_C5B0DcCupeHO5aI5m6-Rocgbkcf5lEl4Fh0pz0EdJtuMddCthJnt0mUyoVBQXT9DtPd0lIhIPPiapY4lbqVTYRQ4Vi2QolhN-A_0jKdQCx5I4B-_2Szr1fo-UmnWuhyNWf3ORaWarF0WzC8F6FJNvQuLjVTwNKMHyEstFzdM76LA2uG1Vpi7ZCpZxWtrcDAQtH4wLL9UB55dOc5rObBtnW_XAeDhK72_r8IUYTJntAZ3-RvTbug3i7YVEm_s6bVsyNj4fXpP-7Kph8Pcn0f6l7u8QzgGu1cX5eY9dKS0tlgmuvQepibhZT-m4Fej4Gl8Sv3OdACB9YDxOgWKXocxWHzg8LR6agt_hKa_Q0br3Q5lfnqcwmqTNOOYVWlSnUXZOpRUi9UoAz1G3vY",
 				"type": "string"
 			}
 		]
