@@ -31,9 +31,9 @@ class AuthService
     /**
      * AuthService constructor.
      *
-     * @param \Illuminate\Auth\AuthManager $authManager
+     * @param \Illuminate\Auth\AuthManager                     $authManager
      * @param \Illuminate\Auth\Passwords\PasswordBrokerManager $passwordBrokerManager
-     * @param \App\Models\User $user
+     * @param \App\Models\User                            $user
      */
     public function __construct(AuthManager $authManager, PasswordBrokerManager $passwordBrokerManager, User $user)
     {
